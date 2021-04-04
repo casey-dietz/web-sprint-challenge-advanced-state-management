@@ -3,9 +3,11 @@ import React, { Component } from "react";
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
 import Header from './components/Header';
+import { fetchSmurfs } from './actions/index'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
+import { connect } from "react-redux";
 
 class App extends Component {
   render() {
@@ -22,7 +24,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    ...state
+  }
+}
+
+const mapDispatch = callback => {
+  return(fetchSmurfs)
+}
+
+export default connect(mapStateToProps, mapDispatch)(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.
